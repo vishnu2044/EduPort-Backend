@@ -1,0 +1,118 @@
+states = [
+    # United States
+    {"name": "California", "country_name": "United States"},
+    {"name": "Texas", "country_name": "United States"},
+    {"name": "New York", "country_name": "United States"},
+    {"name": "Florida", "country_name": "United States"},
+    {"name": "Illinois", "country_name": "United States"},
+    {"name": "Pennsylvania", "country_name": "United States"},
+    {"name": "Ohio", "country_name": "United States"},
+    {"name": "Georgia", "country_name": "United States"},
+    {"name": "North Carolina", "country_name": "United States"},
+    {"name": "Michigan", "country_name": "United States"},
+
+    # Canada
+    {"name": "Ontario", "country_name": "Canada"},
+    {"name": "Quebec", "country_name": "Canada"},
+    {"name": "British Columbia", "country_name": "Canada"},
+    {"name": "Alberta", "country_name": "Canada"},
+    {"name": "Manitoba", "country_name": "Canada"},
+    {"name": "Saskatchewan", "country_name": "Canada"},
+    {"name": "Nova Scotia", "country_name": "Canada"},
+    {"name": "New Brunswick", "country_name": "Canada"},
+    {"name": "Newfoundland and Labrador", "country_name": "Canada"},
+    {"name": "Prince Edward Island", "country_name": "Canada"},
+
+    # India
+    {"name": "Maharashtra", "country_name": "India"},
+    {"name": "Kerala", "country_name": "India"},
+    {"name": "Karnataka", "country_name": "India"},
+    {"name": "Tamil Nadu", "country_name": "India"},
+    {"name": "Uttar Pradesh", "country_name": "India"},
+    {"name": "Gujarat", "country_name": "India"},
+    {"name": "Rajasthan", "country_name": "India"},
+    {"name": "West Bengal", "country_name": "India"},
+    {"name": "Madhya Pradesh", "country_name": "India"},
+    {"name": "Bihar", "country_name": "India"},
+    {"name": "Punjab", "country_name": "India"},
+
+    # Sri Lanka
+    {"name": "Central Province", "country_name": "Sri Lanka"},
+    {"name": "Eastern Province", "country_name": "Sri Lanka"},
+    {"name": "Northern Province", "country_name": "Sri Lanka"},
+    {"name": "Southern Province", "country_name": "Sri Lanka"},
+    {"name": "Western Province", "country_name": "Sri Lanka"},
+    {"name": "North Western Province", "country_name": "Sri Lanka"},
+    {"name": "North Central Province", "country_name": "Sri Lanka"},
+    {"name": "Uva Province", "country_name": "Sri Lanka"},
+    {"name": "Sabaragamuwa Province", "country_name": "Sri Lanka"},
+
+    # Australia
+    {"name": "New South Wales", "country_name": "Australia"},
+    {"name": "Victoria", "country_name": "Australia"},
+    {"name": "Queensland", "country_name": "Australia"},
+    {"name": "Western Australia", "country_name": "Australia"},
+    {"name": "South Australia", "country_name": "Australia"},
+    {"name": "Tasmania", "country_name": "Australia"},
+    {"name": "Australian Capital Territory", "country_name": "Australia"},
+    {"name": "Northern Territory", "country_name": "Australia"},
+
+    # Japan
+    {"name": "Hokkaido", "country_name": "Japan"},
+    {"name": "Aomori", "country_name": "Japan"},
+    {"name": "Iwate", "country_name": "Japan"},
+    {"name": "Miyagi", "country_name": "Japan"},
+    {"name": "Akita", "country_name": "Japan"},
+    {"name": "Yamagata", "country_name": "Japan"},
+    {"name": "Fukushima", "country_name": "Japan"},
+    {"name": "Ibaraki", "country_name": "Japan"},
+    {"name": "Tochigi", "country_name": "Japan"},
+    {"name": "Gunma", "country_name": "Japan"},
+
+    # South Africa
+    {"name": "Gauteng", "country_name": "South Africa"},
+    {"name": "KwaZulu-Natal", "country_name": "South Africa"},
+    {"name": "Western Cape", "country_name": "South Africa"},
+    {"name": "Eastern Cape", "country_name": "South Africa"},
+    {"name": "Limpopo", "country_name": "South Africa"},
+    {"name": "Mpumalanga", "country_name": "South Africa"},
+    {"name": "North West", "country_name": "South Africa"},
+    {"name": "Free State", "country_name": "South Africa"},
+    {"name": "Northern Cape", "country_name": "South Africa"},
+
+    # Brazil
+    {"name": "São Paulo", "country_name": "Brazil"},
+    {"name": "Rio de Janeiro", "country_name": "Brazil"},
+    {"name": "Minas Gerais", "country_name": "Brazil"},
+    {"name": "Bahia", "country_name": "Brazil"},
+    {"name": "Paraná", "country_name": "Brazil"},
+    {"name": "Rio Grande do Sul", "country_name": "Brazil"},
+    {"name": "Pernambuco", "country_name": "Brazil"},
+    {"name": "Ceará", "country_name": "Brazil"},
+    {"name": "Pará", "country_name": "Brazil"},
+    {"name": "Amazonas", "country_name": "Brazil"},
+
+    # Germany
+    {"name": "Baden-Württemberg", "country_name": "Germany"},
+    {"name": "Bavaria", "country_name": "Germany"},
+    {"name": "Berlin", "country_name": "Germany"},
+    {"name": "Brandenburg", "country_name": "Germany"},
+    {"name": "Bremen", "country_name": "Germany"},
+    {"name": "Hamburg", "country_name": "Germany"},
+    {"name": "Hesse", "country_name": "Germany"},
+    {"name": "Lower Saxony", "country_name": "Germany"},
+    {"name": "Mecklenburg-Vorpommern", "country_name": "Germany"},
+    {"name": "North Rhine-Westphalia", "country_name": "Germany"},
+
+    # France
+    {"name": "Île-de-France", "country_name": "France"},
+    {"name": "Provence-Alpes-Côte d'Azur", "country_name": "France"},
+    {"name": "Occitanie", "country_name": "France"},
+    {"name": "Nouvelle-Aquitaine", "country_name": "France"},
+    {"name": "Auvergne-Rhône-Alpes", "country_name": "France"},
+    {"name": "Hauts-de-France", "country_name": "France"},
+    {"name": "Grand Est", "country_name": "France"},
+    {"name": "Brittany", "country_name": "France"},
+    {"name": "Normandy", "country_name": "France"},
+    {"name": "Bourgogne-Franche-Comté", "country_name": "France"}
+]

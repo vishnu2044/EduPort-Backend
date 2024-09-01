@@ -1,0 +1,1 @@
+from .instructor_profile import InstructorProfileCreateSerializer
