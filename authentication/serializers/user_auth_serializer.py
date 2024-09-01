@@ -96,6 +96,7 @@ class UserLoginSerializer(TokenObtainPairSerializer):
         try:
             user_profile = UserProfile.objects.get(user=user)
             data['user_profile'] = UserProfileSerializer(user_profile).data
+            data['message'] = "User login successfull !"
         except UserProfile.DoesNotExist:
             data['user_profile'] = None
 
@@ -119,11 +120,11 @@ class SignUpSerializer(serializers.Serializer):
         Validate password to ensure it meets the required criteria.
         """
         if len(value) < 8:
-            raise serializers.ValidationError("Password must be at least 8 characters long.")
+            raise serializers.ValidationError({"message": "Password must be at least 8 characters long."})
         if not any(char.isdigit() for char in value):
-            raise serializers.ValidationError("Password must contain at least one digit.")
+            raise serializers.ValidationError({"message": "Password must contain at least one digit."})
         if not any(char.isalpha() for char in value):
-            raise serializers.ValidationError("Password must contain at least one letter.")
+            raise serializers.ValidationError({"message": "Password must contain at least one letter."})
         return value
 
     def validate(self, data):
@@ -131,9 +132,9 @@ class SignUpSerializer(serializers.Serializer):
         Validate username and email for uniqueness.
         """
         if User.objects.filter(username=data['username']).exists():
-            raise serializers.ValidationError({"username": "Username is already taken."})
+            raise serializers.ValidationError({"message": "Username is already taken."})
         if User.objects.filter(email=data['email']).exists():
-            raise serializers.ValidationError({"email": "Email is already taken."})
+            raise serializers.ValidationError({"message": "Email is already taken."})
         return data
 
     def create(self, validated_data):
