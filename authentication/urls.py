@@ -1,7 +1,4 @@
 from django.urls import path
-# from .views import (
-#     TokenRefresh
-# )
 from .views.admin_auth import AdminLogin
 from .views.refresh_token import TokenRefresh
 from .views.user_auth import (

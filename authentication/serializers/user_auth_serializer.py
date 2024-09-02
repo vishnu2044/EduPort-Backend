@@ -120,11 +120,11 @@ class SignUpSerializer(serializers.Serializer):
         Validate password to ensure it meets the required criteria.
         """
         if len(value) < 8:
-            raise serializers.ValidationError({"message": "Password must be at least 8 characters long."})
+            raise serializers.ValidationError("Password must be at least 8 characters long.")
         if not any(char.isdigit() for char in value):
-            raise serializers.ValidationError({"message": "Password must contain at least one digit."})
+            raise serializers.ValidationError("Password must contain at least one digit.")
         if not any(char.isalpha() for char in value):
-            raise serializers.ValidationError({"message": "Password must contain at least one letter."})
+            raise serializers.ValidationError("Password must contain at least one letter.")
         return value
 
     def validate(self, data):
@@ -132,15 +132,30 @@ class SignUpSerializer(serializers.Serializer):
         Validate username and email for uniqueness.
         """
         if User.objects.filter(username=data['username']).exists():
-            raise serializers.ValidationError({"message": "Username is already taken."})
+            raise ValidationError({"message":"Username is already taken."})
         if User.objects.filter(email=data['email']).exists():
-            raise serializers.ValidationError({"message": "Email is already taken."})
+            raise serializers.ValidationError({"message":"Email is already taken."})
         return data
+
+    def to_internal_value(self, data):
+        """
+        Override to_internal_value to handle error formatting during validation.
+        """
+        try:
+            return super().to_internal_value(data)
+        except serializers.ValidationError as exc:
+            for field, errors in exc.detail.items():
+                raise serializers.ValidationError({"message": errors[0]})
+
+
 
     def create(self, validated_data):
         """
         Create a new user and associated profile.
         """
+        if User.objects.filter(username = validated_data['username']).exists():
+            raise ValidationError({"message":"username is already taken."})
+
         otp = generate_otp()
 
 
