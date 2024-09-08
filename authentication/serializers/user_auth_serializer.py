@@ -78,6 +78,9 @@ class UserLoginSerializer(TokenObtainPairSerializer):
         
         try:
             user = User.objects.get(username=username)
+            if not User.is_active:
+                raise ValidationError({"Message": "User subscritption is not valid"})
+            
 
             if not user.check_password(password):
                 raise ValidationError({'message': 'Please check your password'})

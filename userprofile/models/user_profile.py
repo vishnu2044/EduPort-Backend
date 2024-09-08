@@ -15,6 +15,7 @@ from django.utils import timezone
 class UserProfile(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    subscription_status = models.BooleanField(default=False)
     
     phone = models.CharField(max_length=15, blank=True, null=True)
     user_type = models.CharField(max_length=50, choices=ROLE_CHOICES, default=ROLE_ADMIN)
