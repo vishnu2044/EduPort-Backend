@@ -1,6 +1,9 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from userprofile.models.user_profile import UserProfile
+from userprofile.models.user_profile import (
+    UserProfile,
+    OtpValidation
+    )
 from authentication.constants import ROLE_CHOICES
 from userprofile.constants import (
     GENDER_CHOICES, 
@@ -79,7 +82,7 @@ class UserLoginSerializer(TokenObtainPairSerializer):
         try:
             user = User.objects.get(username=username)
             if not User.is_active:
-                raise ValidationError({"Message": "User subscritption is not valid"})
+                raise ValidationError({"message": "User  is not valid. Please contact admin panel"})
             
 
             if not user.check_password(password):
@@ -98,10 +101,13 @@ class UserLoginSerializer(TokenObtainPairSerializer):
 
         try:
             user_profile = UserProfile.objects.get(user=user)
-            data['user_profile'] = UserProfileSerializer(user_profile).data
+            data['is_active'] = user_profile.user.is_active
+            data['user_type'] = user_profile.user_type
+            
             data['message'] = "User login successfull !"
         except UserProfile.DoesNotExist:
             data['user_profile'] = None
+            data['message'] = "User profile not found. Please complete your profile."
 
         return data
 
@@ -177,6 +183,11 @@ class SignUpSerializer(serializers.Serializer):
             user_type=validated_data['user_type'],
             otp = otp
         )
+        OtpValidation.objects.create(
+            user=user,
+            otp=otp
+        )
+        
 
         context = {
             'user':user,

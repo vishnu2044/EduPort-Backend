@@ -11,11 +11,12 @@ from authentication.constants import (
 import uuid
 from django.core.validators import FileExtensionValidator
 from django.utils import timezone
+from datetime import timedelta
+
 
 class UserProfile(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    subscription_status = models.BooleanField(default=False)
     
     phone = models.CharField(max_length=15, blank=True, null=True)
     user_type = models.CharField(max_length=50, choices=ROLE_CHOICES, default=ROLE_ADMIN)
@@ -31,8 +32,6 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return f"{self.user.username}'s Profile"
-
-
 
 
 class UserImage(models.Model):
@@ -60,3 +59,21 @@ class UserImage(models.Model):
     class Meta:
         verbose_name = "User Image"
         verbose_name_plural = "User Images"
+
+
+
+class OtpValidation(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    otp = models.CharField(max_length=6, null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)  # Timestamp when OTP is created
+
+    def is_otp_valid(self):
+        """
+        Check if the OTP is still valid. OTP is valid for 2 minutes from creation.
+        """
+        expiration_time = self.created_at + timedelta(minutes=2)
+        return timezone.now() < expiration_time
+
+    def __str__(self):
+        return f"OTP for {self.user.username} - {self.otp}"
+
