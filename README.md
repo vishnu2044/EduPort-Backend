@@ -50,6 +50,12 @@ Ensure that the database is created and the user has the required permissions.
 
 ```
 
+- To import necessary data:
+```shell
+  python manage.py import_qualifications
+  python manage.py import_state_and_countries
+```
+
 - To run the server
 ```shell
   python manage.py runserver
@@ -66,8 +72,7 @@ Ensure that the database is created and the user has the required permissions.
 ``` 
 
 
- - Before starting the project, run these commands to import necessary data:
-```shell
-  python manage.py import_qualifications
-  python manage.py import_state_and_countries
-```
+ If you are pulling the lastest code which you have already working on please run these cammands
+
+ 
+
