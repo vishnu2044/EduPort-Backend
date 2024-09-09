@@ -60,3 +60,4 @@ class VerifyEmail(APIView):
         
         except UserProfile.DoesNotExist:
             return Response({"error":"User profile does not found"}, status=status.HTTP_404_NOT_FOUND)
+        

@@ -66,12 +66,13 @@ class OtpValidation(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     otp = models.CharField(max_length=6, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)  # Timestamp when OTP is created
+    updated_at = models.DateTimeField(auto_now=True)  
 
     def is_otp_valid(self):
         """
         Check if the OTP is still valid. OTP is valid for 2 minutes from creation.
         """
-        expiration_time = self.created_at + timedelta(minutes=2)
+        expiration_time = self.updated_at + timedelta(minutes=1)
         return timezone.now() < expiration_time
 
     def __str__(self):

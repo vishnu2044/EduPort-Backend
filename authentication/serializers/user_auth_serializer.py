@@ -122,7 +122,7 @@ class SignUpSerializer(serializers.Serializer):
     password = serializers.CharField(write_only=True)
     email = serializers.EmailField(max_length=255)
     user_type = serializers.ChoiceField(choices=ROLE_CHOICES)
-    gender = serializers.ChoiceField(choices=GENDER_CHOICES)
+    gender = serializers.ChoiceField(choices=GENDER_CHOICES, allow_blank=True, required=False)
 
     def validate_password(self, value):
         """
@@ -141,20 +141,20 @@ class SignUpSerializer(serializers.Serializer):
         Validate username and email for uniqueness.
         """
         if User.objects.filter(username=data['username']).exists():
-            raise ValidationError({"message":"Username is already taken."})
+            raise ValidationError({"username":"Username is already taken."})
         if User.objects.filter(email=data['email']).exists():
-            raise serializers.ValidationError({"message":"Email is already taken."})
+            raise serializers.ValidationError({"email":"Email is already taken."})
         return data
 
-    def to_internal_value(self, data):
-        """
-        Override to_internal_value to handle error formatting during validation.
-        """
-        try:
-            return super().to_internal_value(data)
-        except serializers.ValidationError as exc:
-            for field, errors in exc.detail.items():
-                raise serializers.ValidationError({"message": errors[0]})
+    # def to_internal_value(self, data):
+    #     """
+    #     Override to_internal_value to handle error formatting during validation.
+    #     """
+    #     try:
+    #         return super().to_internal_value(data)
+    #     except serializers.ValidationError as exc:
+    #         for field, errors in exc.detail.items():
+    #             raise serializers.ValidationError({"message": errors[0]})
 
 
 
