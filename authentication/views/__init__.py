@@ -3,5 +3,10 @@ from .admin_auth import AdminLogin
 from .user_auth import  (
     UserSignUpView,
     UserLoginView,
-    VerifyEmail
+    VerifyEmail,
+    
+)
+
+from .otp_varification import (
+    ResendOtpVerification
 )

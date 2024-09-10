@@ -47,16 +47,6 @@ class VerifyEmail(APIView):
             return Response({"error":"User profile does not found"}, status=status.HTTP_404_NOT_FOUND)
 
 
-# from rest_framework.views import APIView
-# from rest_framework.response import Response
-# from rest_framework import status
-# from django.core.mail import send_mail
-# from django.template.loader import render_to_string
-# from django.utils.html import strip_tags
-# from django.conf import settings
-# from .models import User, UserProfile, OtpValidation
-# from .utils import generate_otp  # Assuming you have a function to generate OTP
-
 
 class ResendOtpVerification(APIView):
     def post(self, request):

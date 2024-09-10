@@ -146,15 +146,7 @@ class SignUpSerializer(serializers.Serializer):
             raise serializers.ValidationError({"email":"Email is already taken."})
         return data
 
-    # def to_internal_value(self, data):
-    #     """
-    #     Override to_internal_value to handle error formatting during validation.
-    #     """
-    #     try:
-    #         return super().to_internal_value(data)
-    #     except serializers.ValidationError as exc:
-    #         for field, errors in exc.detail.items():
-    #             raise serializers.ValidationError({"message": errors[0]})
+
 
 
 
